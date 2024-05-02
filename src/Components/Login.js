@@ -1,20 +1,48 @@
-import { useState } from "react"
-import { SIGNIN_IMG } from "../Utils/links"
+import { useEffect, useState } from "react"
+import { PROFILE_PHOTO, SIGNIN_IMG } from "../Utils/links"
 import Header from "./Header"
 import { useRef } from "react"
 import { checkValidation } from "../Utils/validate"
-import {createUserWithEmailAndPassword,signInWithEmailAndPassword} from "firebase/auth"
+import {createUserWithEmailAndPassword,onAuthStateChanged,signInWithEmailAndPassword, updateProfile} from "firebase/auth"
 import { auth } from "./firebase"
+import { useDispatch } from "react-redux"
+import { useNavigate } from "react-router-dom"
+import { addUser, removeUser } from "../Utils/userSlice"
 
 const Login=()=>{
     const[signIn,setSignIn]=useState(true)
     const[isValid,setIsValid]=useState(null)
 
+    const name=useRef(null)
     const email=useRef(null)
     const password=useRef(null)
 
+    const dispatch=useDispatch()
+const navigate=useNavigate()
+  
+useEffect(()=>{
+onAuthStateChanged(auth, (user) => {
+  if (user) {
+    // User is signed in
+    const {uid,email,displayName,photoURL} = user;
+    dispatch(addUser({
+      uid:uid,
+      email:email,
+      name:displayName,
+      photoURL:photoURL
+    }))
+    
+  } else {
+    // User is signed out
+    dispatch(removeUser())
+  }
+
+});
+  
+},[])
+
     const handleClick=()=>{
-        console.log(email.current.value,password.current.value)
+        // console.log(email.current.value,password.current.value)
         const result=checkValidation(email.current.value,password.current.value)
         setIsValid(result)
         if(result!==null) return
@@ -24,29 +52,53 @@ const Login=()=>{
                     .then((userCredential) => {
                         // Signed up 
                         const user = userCredential.user;
-                        console.log(user)
+                                console.log("user:",user)
+                                console.log("auth:",auth)
+                                updateProfile(user, {
+                                    displayName: name.current.value, 
+                                    photoURL: PROFILE_PHOTO
+                                }).then(() => {
+                                    // Profile updated!
+                                    const {uid,email,displayName,photoURL} = auth.currentUser;
+                                        dispatch(addUser({
+                                        uid:uid,
+                                        email:email,
+                                        name:displayName,
+                                        photoURL:photoURL
+                                        }))
+                                    navigate('/browse')
+                                }).catch((error) => {
+                                    // An error occurred
+                                    const errorCode = error.code;
+                                const errorMessage = error.message;
+                                setIsValid(errorCode+"-"+errorMessage)
+                                });
+                            
                         // ...
                     })
                     .catch((error) => {
                         const errorCode = error.code;
                         const errorMessage = error.message;
                         setIsValid(errorCode+"-"+errorMessage)
+                        navigate('/')
                         // ..
                     });
         }
 
         if(signIn){
-            signInWithEmailAndPassword(auth, email, password)
+            signInWithEmailAndPassword(auth,email.current.value,password.current.value)
                     .then((userCredential) => {
                         // Signed in 
                         const user = userCredential.user;
                         console.log(user)
+                        navigate('/browse')
                         // ...
                     })
                     .catch((error) => {
                         const errorCode = error.code;
                         const errorMessage = error.message;
                         setIsValid(errorCode+"-"+errorMessage)
+                        navigate('/')
                     });
 
         }
@@ -60,8 +112,8 @@ const Login=()=>{
             </div>
                 <form onSubmit={(e)=>e.preventDefault()} action="" className="flex flex-col absolute bg-opacity-80 bg-black p-12 w-3/12 my-36 mx-auto right-0 left-0 rounded-lg text-white">
                 <h1 className="py-2 font-bold text-3xl">{signIn?"Sign In":"Sign Up"}</h1>
-                {!signIn&&<input type="text" placeholder="Full name" className="my-3 p-4 w-full bg-gray-900 rounded-lg" />}
-                <input ref={email} type="text" placeholder="Email or mobile number" className="my-3 p-4 w-full bg-gray-900 rounded-lg" />
+                {!signIn&&<input ref={name} type="text" placeholder="First name" className="my-3 p-4 w-full bg-gray-900 rounded-lg" />}
+                <input ref={email} type="text" placeholder="Email" className="my-3 p-4 w-full bg-gray-900 rounded-lg" />
                 <input ref={password} type="password" placeholder="Password" className="my-3 p-4 w-full  bg-gray-900 rounded-lg" />
                 <p className="text-red-800 text-lg font-semibold my-4">{isValid}</p>
                 <button className="py-4 bg-red-700 h-14 font-bold rounded-lg  hover:bg-red-600" onClick={handleClick}>{signIn?"Sign In":"Sign Up"}</button>

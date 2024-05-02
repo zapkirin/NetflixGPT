@@ -7,7 +7,11 @@
 -sign up form
 -form validation
 -useRef hook
-
+-Firebase setup
+-deploying our app to production
+-create signup user account
+-implement sign in user api
+-created our redux store
 
 
 # Features
