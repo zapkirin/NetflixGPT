@@ -1,13 +1,13 @@
-import { useEffect, useState } from "react"
+import {  useState } from "react"
 import { PROFILE_PHOTO, SIGNIN_IMG } from "../Utils/links"
 import Header from "./Header"
 import { useRef } from "react"
 import { checkValidation } from "../Utils/validate"
-import {createUserWithEmailAndPassword,onAuthStateChanged,signInWithEmailAndPassword, updateProfile} from "firebase/auth"
+import {createUserWithEmailAndPassword,signInWithEmailAndPassword, updateProfile} from "firebase/auth"
 import { auth } from "./firebase"
 import { useDispatch } from "react-redux"
-import { useNavigate } from "react-router-dom"
-import { addUser, removeUser } from "../Utils/userSlice"
+// import { useNavigate } from "react-router-dom"
+import { addUser} from "../Utils/userSlice"
 
 const Login=()=>{
     const[signIn,setSignIn]=useState(true)
@@ -18,28 +18,7 @@ const Login=()=>{
     const password=useRef(null)
 
     const dispatch=useDispatch()
-const navigate=useNavigate()
-  
-useEffect(()=>{
-onAuthStateChanged(auth, (user) => {
-  if (user) {
-    // User is signed in
-    const {uid,email,displayName,photoURL} = user;
-    dispatch(addUser({
-      uid:uid,
-      email:email,
-      name:displayName,
-      photoURL:photoURL
-    }))
-    
-  } else {
-    // User is signed out
-    dispatch(removeUser())
-  }
 
-});
-  
-},[])
 
     const handleClick=()=>{
         // console.log(email.current.value,password.current.value)
@@ -66,7 +45,7 @@ onAuthStateChanged(auth, (user) => {
                                         name:displayName,
                                         photoURL:photoURL
                                         }))
-                                    navigate('/browse')
+                                
                                 }).catch((error) => {
                                     // An error occurred
                                     const errorCode = error.code;
@@ -80,7 +59,6 @@ onAuthStateChanged(auth, (user) => {
                         const errorCode = error.code;
                         const errorMessage = error.message;
                         setIsValid(errorCode+"-"+errorMessage)
-                        navigate('/')
                         // ..
                     });
         }
@@ -91,14 +69,13 @@ onAuthStateChanged(auth, (user) => {
                         // Signed in 
                         const user = userCredential.user;
                         console.log(user)
-                        navigate('/browse')
-                        // ...
+                            // ...
                     })
                     .catch((error) => {
                         const errorCode = error.code;
                         const errorMessage = error.message;
                         setIsValid(errorCode+"-"+errorMessage)
-                        navigate('/')
+                
                     });
 
         }
