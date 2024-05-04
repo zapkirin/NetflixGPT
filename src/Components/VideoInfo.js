@@ -2,6 +2,7 @@ import React from 'react'
 
 const VideoInfo = ({title,description}) => {
   return (
+    
     <div className='w-screen aspect-video text-white py-[20%] px-24 absolute bg-gradient-to-r from-black'>
         <h1 className="font-bold text-6xl w-1/3">{title}</h1>
             <p className="w-1/4 text-lg my-4">{description}</p>

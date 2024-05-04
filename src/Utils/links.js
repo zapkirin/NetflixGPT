@@ -11,3 +11,5 @@ export const CURRENT_MOVIES = {
       Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJhMDhlZjBhODNhYzM3MzQ2M2NjMTJjYzEyMmFjNzA3ZCIsInN1YiI6IjY2MzQ5NzU1ODNlZTY3MDEyNzQwZTM0ZiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.bUlnlI1daV70deRWY-SRO_2KI-BGIvZmazyQYbJC9TM'
     }
   };
+
+  export const IMG_CDN_URL="https://image.tmdb.org/t/p/w500"

@@ -26,6 +26,11 @@
 -update store with trailer data by creating a new action and dispatching it
 -Embedded the yt video making autoplay and mute
 -Added tailwind to make MainContainer  look good
+-Built secondary component
+-Build Moviecard
+-Found out image cdn url
+-made the browse amazing with tailwind
+- used usepopular custome hooks and made other custom hooks too
 
 
 # Features
