@@ -13,3 +13,9 @@ export const CURRENT_MOVIES = {
   };
 
   export const IMG_CDN_URL="https://image.tmdb.org/t/p/w500"
+
+  export const LANG=[
+    {value:"En", name:"English"},
+    {value:"Hn", name:"Hindi"},
+    {value:"Sp", name:"Spanish"},
+    ]

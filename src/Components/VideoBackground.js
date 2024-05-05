@@ -8,7 +8,7 @@ const VideoBackground = ({movieID}) => {
    const movieKey=useSelector(store=>store.movie?.trailer?.key)
    if(!movieKey) return
 
-   console.log(movieKey)
+  //  console.log(movieKey)
 
   return (
     <div className="w-screen aspect-video">

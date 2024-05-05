@@ -2,14 +2,14 @@ import React from 'react'
 import MovieCards from './MovieCards'
 
 const MovieList = ({title,movies}) => {
-    console.log("MovieList:",movies)
+    // console.log("MovieList:",movies)
   return (
     <div className='text-white px-6 '>
         <h1 className='text-3xl font-bold py-4'>{title}</h1>
         <div className='flex overflow-x-scroll'>
             <div className='flex'>
             {movies?.map((x)=>{
-                return <MovieCards posterPath={x.poster_path}/>
+                return <MovieCards key={x.poster_path} posterPath={x.poster_path}/>
             })}
             </div>
             

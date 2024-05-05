@@ -9,6 +9,8 @@ import SecondaryContainer from './SecondaryContainer';
 import usePopularMovies from '../Hooks/usePopularMovies';
 import useTopRatedMovies from '../Hooks/useTopRatedMovies';
 import useUpcomingMovies from '../Hooks/useUpcomingMovies';
+import { useSelector } from 'react-redux';
+import GptSearch from './GptSearch';
 
 
 
@@ -18,11 +20,17 @@ const Browse = () => {
  useTopRatedMovies();
  useUpcomingMovies();
 
+ const toggle=useSelector(store=>store.gpt.toggleValue)
+
+
   return (
         <div className=''>
           <Header/>
+          {toggle?<GptSearch/>:<>
           <PrimaryContainer />
           <SecondaryContainer/>
+          </>}
+          
         </div>
   )
 }
