@@ -17,6 +17,7 @@ const useRecentMovies=()=>{
       useEffect(()=>{
         // nowPlayingMovies&&
         getNowPLayingMovies()
+      // eslint-disable-next-line react-hooks/exhaustive-deps
       },[])
 
 }

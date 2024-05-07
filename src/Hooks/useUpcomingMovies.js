@@ -1,4 +1,4 @@
-import { useDispatch, useSelector } from "react-redux"
+import { useDispatch} from "react-redux"
 import { CURRENT_MOVIES } from "../Utils/links"
 import { addUpcomingMovies } from "../Utils/movieSlice"
 import { useEffect } from "react"
@@ -18,6 +18,7 @@ const useUpcomingMovies=()=>{
     useEffect(()=>{
         // upcomingMovies&&
         getUpcomingMovies()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     },[])
 }
 export default useUpcomingMovies

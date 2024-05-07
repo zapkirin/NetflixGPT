@@ -42,12 +42,13 @@ useEffect(()=>{
     }
   });
   return ()=> unsubscribe()
+// eslint-disable-next-line react-hooks/exhaustive-deps
 },[])
 
 const handleToggle=()=>{
   dispatch(toggleView())
 }
-const langKey=useSelector(store=>store.config.lang)
+
 const handleLanguage=(language)=>{
   dispatch(addLanguage(language.target.value))
  
