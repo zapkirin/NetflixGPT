@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react'
+import React, { useEffect} from 'react'
 import { auth } from './firebase'
 import { onAuthStateChanged, signOut } from 'firebase/auth';
 import { useDispatch, useSelector } from 'react-redux';
@@ -52,24 +52,24 @@ const handleLanguage=(language)=>{
   dispatch(addLanguage(language.target.value))
  
 }
- console.log(langKey)
+//  console.log(langKey)
 
 
   return (
-    <div className='flex justify-between items-center absolute bg-gradient-to-b from-black w-full'>
+    <div className='flex flex-col justify-between items-center absolute bg-gradient-to-b from-black w-full md:bg-opacity-60 md:flex-row'>
         <div className=' z-10'>
-          <img className='w-60 m-3 p-5 bg-gradient-to-b from-black' src={HEADER_LOGO} alt="" />
+          <img className='w-[40%]  mx-auto p-5 bg-gradient-to-b from-black md:w-60 md:static' src={HEADER_LOGO} alt="" />
         </div>
-          {auth.currentUser&&<div className='flex items-center z-10'>
-            <h1 className='text-white font-bold'>{auth?.currentUser?.displayName.toUpperCase()}</h1>
-            <img className='w-14 mx-5' src={auth?.currentUser?.photoURL} alt="" />
-           {isSearch&&<select  name="" id="" className='mx-4 py-4 px-2 bg-black text-white' onChange={handleLanguage}>
+          {auth.currentUser&&<div className='flex items-center z-10 md:pt-6'>
+            <h1 className='pl-3 hidden md:inline text-white font-bold'>{auth?.currentUser?.displayName}</h1>
+            <img className='w-10 md:inline hidden  mx-5 md:w-14' src={auth?.currentUser?.photoURL} alt="" />
+           {isSearch&&<select  name="" id="" className='mx-2 py-1 px-1 bg-black text-white md:mx-4 md:py-4 md:px-2' onChange={handleLanguage}>
               {LANG.map((language)=>{
                   return  <option key={language.value} value={language.value}>{language.name}</option>
               })}
             </select>}
-            <button className='bg-amber-500 text-white px-4 py-2 rounded-lg' onClick={handleToggle}>{!isSearch?"⌕ GPTSearch":"⌂ Home Page"}</button>
-            <button onClick={handleClick} className='p-4 rounded-md mx-10 text-white bg-red-700 h-14 font-bold  hover:bg-red-600'>Sign Out</button>
+            <button className='bg-amber-500 text-white px-3 py-1 mx-4 text-sm rounded-lg md:px-4 md:py-2 md:text-lg' onClick={handleToggle}>{!isSearch?"⌕ GPTSearch":"⌂ Home Page"}</button>
+            <button onClick={handleClick} className='mx-3 py-2 px-4 md:px-4 md:py-1 text-xs md:text-lg rounded-md md:mx-10 text-white bg-red-700 md:h-14 font-bold  hover:bg-red-600'>Sign Out</button>
           </div>}
     </div>
     

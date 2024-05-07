@@ -6,6 +6,8 @@ import { useEffect } from "react"
 const useTopRatedMovies=()=>{
     const dispatch=useDispatch()
 
+    // const topatedMovies=useSelector(store=>store.movie.topRatedMovies)
+
     const getTopRatedMovies=async()=>{
         const data=await fetch("https://api.themoviedb.org/3/movie/top_rated",CURRENT_MOVIES)
         const json=await data.json()
@@ -13,7 +15,8 @@ const useTopRatedMovies=()=>{
     }
 
     useEffect(()=>{
-        getTopRatedMovies()
+    //    topatedMovies&&
+       getTopRatedMovies()
     },[])
 }
 export default useTopRatedMovies

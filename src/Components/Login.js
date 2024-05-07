@@ -84,10 +84,10 @@ const Login=()=>{
     return(
         <div className="">
             <Header/>
-            <div className="absolute md:block">
-                <img src={SIGNIN_IMG} alt="" />
+            <div className="absolute">
+                <img className="h-screen object-cover md:w-screen md:h-screen" src={SIGNIN_IMG} alt="" />
             </div>
-                <form onSubmit={(e)=>e.preventDefault()} action="" className="flex flex-col absolute bg-opacity-80 bg-black p-12 w-3/12 my-36 mx-auto right-0 left-0 rounded-lg text-white">
+                <form onSubmit={(e)=>e.preventDefault()} action="" className="flex flex-col absolute bg-opacity-80 bg-black p-12 w-10/12 md:w-3/12 my-36 mx-auto right-0 left-0 rounded-lg text-white">
                 <h1 className="py-2 font-bold text-3xl">{signIn?"Sign In":"Sign Up"}</h1>
                 {!signIn&&<input ref={name} type="text" placeholder="First name" className="my-3 p-4 w-full bg-gray-900 rounded-lg" />}
                 <input ref={email} type="text" placeholder="Email" className="my-3 p-4 w-full bg-gray-900 rounded-lg" />

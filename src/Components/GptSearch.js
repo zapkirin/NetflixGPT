@@ -5,10 +5,10 @@ import SearchResult from "./SearchResult"
 const GptSearch=()=>{
     return(
         <div className="">
-            <div className="absolute -z-20">
-            <img  src={SIGNIN_IMG} alt="" />
+            <div className="absolute -z-20 ">
+            <img className="h-screen object-cover md:h-screen w-screen"  src={SIGNIN_IMG} alt="" />
             </div>
-            <div className="py-48 flex flex-col items-center">
+            <div className="pt-60 flex flex-col md:pt-48">
             <SearchBar/>
             <SearchResult/>
             </div>

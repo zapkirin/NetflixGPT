@@ -31,6 +31,19 @@
 -Found out image cdn url
 -made the browse amazing with tailwind
 - used usepopular custome hooks and made other custom hooks too
+-Gpt search page
+-Gpt search bar
+-(Bonus)Multilingual search gpt
+-get Gpt search openAI API key
+-Gpt Search API call
+-Fetched GPT movie suggestions from TMDB
+-Created gptslice added data
+-Reused movie list component to make movie suggestion container
+-Memorization
+-Added .env file and added it to gitignore
+-Made the site responsive
+
+
 
 
 # Features
