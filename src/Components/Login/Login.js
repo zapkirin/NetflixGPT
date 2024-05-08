@@ -1,13 +1,13 @@
 import {  useState } from "react"
-import { PROFILE_PHOTO, SIGNIN_IMG } from "../Utils/links"
-import Header from "./Header"
+import { PROFILE_PHOTO, SIGNIN_IMG } from "../../Utils/links"
+import Header from "../Header"
 import { useRef } from "react"
-import { checkValidation } from "../Utils/validate"
+import { checkValidation } from "../../Utils/validate"
 import {createUserWithEmailAndPassword,signInWithEmailAndPassword, updateProfile} from "firebase/auth"
-import { auth } from "./firebase"
+import { auth } from "../firebase"
 import { useDispatch } from "react-redux"
 // import { useNavigate } from "react-router-dom"
-import { addUser} from "../Utils/userSlice"
+import { addUser} from "../../Utils/userSlice"
 
 const Login=()=>{
     const[signIn,setSignIn]=useState(true)

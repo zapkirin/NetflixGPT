@@ -1,9 +1,9 @@
 import React, { useRef } from 'react'
-import configLang from '../Utils/configLang'
+import configLang from '../../Utils/configLang'
 import { useDispatch, useSelector } from 'react-redux'
 // import openai from '../Utils/openai'
-import { CURRENT_MOVIES } from '../Utils/links'
-import { addMoviesData } from '../Utils/gptSearchSlice'
+import { CURRENT_MOVIES } from '../../Utils/links'
+import { addMoviesData } from '../../Utils/gptSearchSlice'
 
 const SearchBar = () => {
 
@@ -18,7 +18,7 @@ const SearchBar = () => {
         const data=await fetch("https://api.themoviedb.org/3/search/movie?query="+searchValue.current.value+"&include_adult=false&language=en-US&page=1",CURRENT_MOVIES)
         const json=await data.json()
         // console.log(json.results)
-        console.log(CURRENT_MOVIES)
+        // console.log(CURRENT_MOVIES)
         dispatch(addMoviesData({movieList:json.results,movieTitle:searchValue.current.value}))
     }
     

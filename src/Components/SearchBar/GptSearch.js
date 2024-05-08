@@ -1,4 +1,4 @@
-import { SIGNIN_IMG } from "../Utils/links"
+import { SIGNIN_IMG } from "../../Utils/links"
 import SearchBar from "./SearchBar"
 import SearchResult from "./SearchResult"
 

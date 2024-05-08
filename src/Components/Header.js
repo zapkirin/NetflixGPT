@@ -34,7 +34,7 @@ useEffect(()=>{
         name:displayName,
         photoURL:photoURL
       }))
-      navigate('/browse')
+      // navigate('/browse')
     } else {
       // User is signed out
       dispatch(removeUser())

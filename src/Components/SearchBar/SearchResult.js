@@ -1,7 +1,7 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
 // import { IMG_CDN_URL } from '../Utils/links'
-import MovieList from './MovieList'
+import MovieList from '../Movies/MovieList'
 
 const SearchResult = () => {
 
