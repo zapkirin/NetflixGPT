@@ -6,13 +6,13 @@ import { checkValidation } from "../../Utils/validate"
 import {createUserWithEmailAndPassword,signInWithEmailAndPassword, updateProfile} from "firebase/auth"
 import { auth } from "../firebase"
 import { useDispatch } from "react-redux"
-// import { useNavigate } from "react-router-dom"
+import { useNavigate } from "react-router-dom"
 import { addUser} from "../../Utils/userSlice"
 
 const Login=()=>{
     const[signIn,setSignIn]=useState(true)
     const[isValid,setIsValid]=useState(null)
-
+    const navigate=useNavigate()
     const name=useRef(null)
     const email=useRef(null)
     const password=useRef(null)
@@ -45,7 +45,7 @@ const Login=()=>{
                                         name:displayName,
                                         photoURL:photoURL
                                         }))
-                                
+                                navigate('/browse')
                                 }).catch((error) => {
                                     // An error occurred
                                     const errorCode = error.code;
@@ -70,6 +70,8 @@ const Login=()=>{
                         const user = userCredential.user;
                         console.log(user)
                             // ...
+                           
+                            
                     })
                     .catch((error) => {
                         const errorCode = error.code;

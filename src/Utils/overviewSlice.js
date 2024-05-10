@@ -1,16 +1,22 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+
+
 const overviewSlice=createSlice({
     name:'overview',
     initialState:{
-        movieId:null
+        movieData:null,
+        cast:null
     },
     reducers:{
-        addMovieId:(state,action)=>{
-            state.movieId=action.payload
-        }
+        addMovieData:(state,action)=>{
+            state.movieData=action.payload;
+        },
+        addCast:(state,action)=>{
+            state.cast=action.payload;
+        },
     }
 })
 
-export const {addMovieId}=overviewSlice.actions
+export const {addMovieData,addCast}=overviewSlice.actions
 export default overviewSlice.reducer 

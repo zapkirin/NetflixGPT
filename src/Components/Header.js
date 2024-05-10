@@ -35,7 +35,11 @@ useEffect(()=>{
         photoURL:photoURL
       }))
       // navigate('/browse')
-    } else {
+      if(window.location.pathname==='/'){
+        navigate('/browse')
+      }
+    }   
+    else {
       // User is signed out
       dispatch(removeUser())
       navigate('/')

@@ -14,6 +14,7 @@ import GptSearch from '../SearchBar/GptSearch';
 
 
 
+
 const Browse = () => {
   useRecentMovies();  //Custom hook for fetching movie api and updating the store
  usePopularMovies();
