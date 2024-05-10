@@ -63,26 +63,24 @@ const Overview=()=>{
         console.log(e.target.baseURI.slice(31,))
 
     }
-  
-    
-
     
     return data===null || cast===null || similar===null?<h1>Error</h1>:(
-        <div className="">
+        <div className="bg-black md:bg-transparent">
             <Header/>
-            <div className="absolute -z-30">
+            <div className="w-full pt-36 md:absolute -z-30 md:pt-0">
                 <VideoBackground movieID={movieId}/>
             </div>
-            <div className="pt-36 h-[110vh] z-10">
+            <div className="md:pt-36 md:h-[110vh] z-10">
             <FirstContainer/>
+            </div>
             <div className="pt-[25rem] bg-black">
             <SecondContainer id={movieId}/>
             </div>
-            <div className=" bg-black -mt-[45vh]" key={movieId} onClick={handleClick}>
+            <div className=" bg-black -mt-[70vh] md:-mt-[45vh]" key={movieId} onClick={handleClick}>
             <MovieList title="Similar" movies={similar}/>
             </div>
             
-            </div>
+            
             
         </div>
     )
