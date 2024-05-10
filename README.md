@@ -42,6 +42,8 @@
 -Memorization
 -Added .env file and added it to gitignore
 -Made the site responsive
+-added dynamic routing to eacg ovie
+-each movie has an overview page with cast and similar movie recommendations
 
 
 

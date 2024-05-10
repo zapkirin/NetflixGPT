@@ -28,12 +28,12 @@ const Overview=()=>{
     const data=useSelector((store)=>store.overview.movieData)
     const cast=useSelector(store=>store.overview.cast)
     const similar=useSelector(store=>store.movie.similarMovies)
-    const trailer=useSelector(store=>store.movie.trailer)
     
     useEffect(()=>{
         getOverview()
         getCast()
         fetchMovie()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     },[])
 
     const getOverview=async()=>{
