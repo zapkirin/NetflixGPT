@@ -4,6 +4,7 @@ import VideoBackground from "../Browse/VideoBackground"
 
 const PrimaryContainer=()=>{
     const movies=useSelector(store=>store.movie?.movies)
+    
     if(!movies) return //Early return
     
     const {id,overview,original_title}=movies[0]

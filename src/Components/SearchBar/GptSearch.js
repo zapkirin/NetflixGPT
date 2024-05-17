@@ -1,9 +1,12 @@
 import { SIGNIN_IMG } from "../../Utils/links"
+import Header from "../Header"
 import SearchBar from "./SearchBar"
 import SearchResult from "./SearchResult"
 
 const GptSearch=()=>{
     return(
+        <>
+        <Header/>
         <div className="">
             <div className="absolute -z-20 ">
             <img className="h-screen object-cover md:h-screen w-screen"  src={SIGNIN_IMG} alt="" />
@@ -13,6 +16,7 @@ const GptSearch=()=>{
             <SearchResult/>
             </div>
         </div>
+        </>
     )
 
 

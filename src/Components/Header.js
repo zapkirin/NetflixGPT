@@ -3,7 +3,7 @@ import { auth } from './firebase'
 import { onAuthStateChanged, signOut } from 'firebase/auth';
 import { useDispatch, useSelector } from 'react-redux';
 import { addUser, removeUser } from '../Utils/userSlice';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { HEADER_LOGO, LANG } from '../Utils/links';
 import { toggleView } from '../Utils/gptSearchSlice';
 import { addLanguage } from '../Utils/configSlice';
@@ -73,7 +73,7 @@ const handleLanguage=(language)=>{
                   return  <option key={language.value} value={language.value}>{language.name}</option>
               })}
             </select>}
-            <button className='bg-amber-500 text-white px-3 py-1 mx-4 text-sm rounded-lg md:px-4 md:py-2 md:text-lg' onClick={handleToggle}>{!isSearch?"⌕ GPTSearch":"⌂ Home Page"}</button>
+            <button className='bg-amber-500 text-white px-3 py-1 mx-4 text-sm rounded-lg md:px-4 md:py-2 md:text-lg' onClick={handleToggle}><Link to={!isSearch?"/search":"/browse"}>{!isSearch?"⌕ GPTSearch":"⌂ Home Page"}</Link></button>
             <button onClick={handleClick} className='mx-3 py-2 px-4 md:px-4 md:py-1 text-xs md:text-lg rounded-md md:mx-10 text-white bg-red-700 md:h-14 font-bold  hover:bg-red-600'>Sign Out</button>
           </div>}
     </div>

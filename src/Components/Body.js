@@ -4,6 +4,7 @@ import Login from './Login/Login'
 import Browse from './Browse/Browse'
 import Overview from './Overview/Overview'
 import Error from './Error'
+import GptSearch from './SearchBar/GptSearch'
 
 const Body = () => {
     const appComponents=createBrowserRouter([
@@ -15,6 +16,11 @@ const Body = () => {
         {
           path:'/browse',
           element:<Browse/>,
+          errorElement:<Error/>
+        },
+        {
+          path:'/search',
+          element:<GptSearch/>,
           errorElement:<Error/>
         },
         {
